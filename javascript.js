@@ -1,15 +1,4 @@
-/* Begin with a function called getComputerChoice. 
-
-getComputerChoice()
-    let choiceArray =[ 
-    choice1 = Rock,
-    choice2 = Paper,
-    choice3 = Scissors,
-    ];
-
-    let randomIndex Math.floor(Math.random() * textArray.length) 
-    randomElement = choiceArray[randomeIndex]
-*/
+// Function to establish possible choices that the computer play can choose from. 
 
 function getComputerChoice(){
     let choiceArray = [ 
@@ -23,32 +12,57 @@ function getComputerChoice(){
     return randomElement;
     };
 
+// Plays one round of Rock paper scissors, keeps track of the player score and outputs result to console. 
 
 function playRound(playerSelection, computerSelection) {
 if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     console.log("Draw!")
     }
-    else if (playerSelection.toLowerCase() === "ROCK" && computerSelection.toLowerCase() === "Paper") {
+    else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") {
+        computerScore++;
         console.log("Paper beats Rock! You lose!")
     }
-    else if (playerSelection.toLowerCase() === "ROCK" && computerSelection.toLowerCase() === "Scissors") {
-    console.log("Rock beats Scissors! You Win!")
+    else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
+        playerScore++;
+        console.log("Rock beats Scissors! You Win! Alpha!!!")
     }
-    else if (playerSelection.toLowerCase() === "PAPER" && computerSelection.toLowerCase() === "Scissors") {
-    console.log("Scissors beats Paper! You Lose!")
+    else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") {
+        computerScore++;
+        console.log("Scissors beats Paper! You Lose!")
     }
-    else if (playerSelection.toLowerCase() === "PAPER" && computerSelection.toLowerCase() === "Rock") {
-    console.log("Scissors beats Paper! You Lose!")
+    else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
+        playerScore++;
+        console.log("Paper beats Rock! You Win! Alpha!!!")
     }
-    else if (playerSelection.toLowerCase() === "Scissors" && computerSelection.toLowerCase() === "Rock") {
-    console.log("Scissors beats Paper! You Lose!")
+    else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
+        computerScore++;
+        console.log("Rock beats Scissors! You Lose!")
     }
-    else{
-    console.log("Scissors beats Paper! You Lose!")
+    else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
+        playerScore++;
+        console.log("Scissors beats Paper! You Win! Alpha!!!")
+    }
+    else {
+        console.log("Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game.")
     }
 }
 
-//const playerSelection = "rock";
-//const computerSelection = getComputerChoice();
-//console.log(playRound(playerSelection, computerSelection));
+// Establish global variables for score, so that the function for playing rounds can access and increment them 
+let playerScore = 0;
+let computerScore = 0;
+
+
+// Function to play the game 5 times
+function game() {
+    roundCounter = 0;
+    for (roundCounter = 0; roundCounter < 5; roundCounter++) {
+        let playerSelection = window.prompt("Let's play Rock, Paper, Scissors! What is your choice?");
+        let computerSelection = getComputerChoice();
+        playRound(playerSelection,computerSelection)
+    }
+}
+
+
+//Calling the function so the game is played
+game();
 
