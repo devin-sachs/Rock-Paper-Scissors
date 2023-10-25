@@ -20,7 +20,7 @@ if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") {
         computerScore++;
-        console.log("Paper beats Rock! You lose!")
+        console.log("Paper beats Rock! You lose! Beta!!!")
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
         playerScore++;
@@ -28,7 +28,7 @@ if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") {
         computerScore++;
-        console.log("Scissors beats Paper! You Lose!")
+        console.log("Scissors beats Paper! You Lose! Beta!!!")
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
         playerScore++;
@@ -36,7 +36,7 @@ if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
         computerScore++;
-        console.log("Rock beats Scissors! You Lose!")
+        console.log("Rock beats Scissors! You Lose! Beta!!!")
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
         playerScore++;
@@ -51,7 +51,6 @@ if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
 let playerScore = 0;
 let computerScore = 0;
 
-
 // Function to play the game 5 times
 function game() {
     roundCounter = 0;
@@ -60,8 +59,16 @@ function game() {
         let computerSelection = getComputerChoice();
         playRound(playerSelection,computerSelection)
     }
+    if (playerScore > computerScore) {
+        console.log("You Won the game!!! What an ALPHA!" + playerScore.toString() + ":" + computerScore.toString());
+    }
+    else if (playerScore === computerScore){
+        console.log("You tied the game!!!!" + playerScore.toString() + ":" + computerScore.toString());
+    }
+    else if( playerScore < computerScore) {
+        console.log("You lost to the computer!!! LMAOOOO" + playerScore.toString() + ":" + computerScore.toString());
+    }
 }
-
 
 //Calling the function so the game is played
 game();
