@@ -1,4 +1,4 @@
-.buttons, .btn-container {
+.buttons, #btn-container, #title-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,6 +6,6 @@
   
 }
 
-.btn-container{
+#btn-container{
     padding: 25px 50px 75px 100px;
 }

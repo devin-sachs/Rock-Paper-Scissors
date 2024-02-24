@@ -14,6 +14,15 @@ function getComputerChoice(){
 
 // Plays one round of Rock paper scissors, keeps track of the player score and outputs result to console. 
 
+const btn_container = document.getElementById('btn-container');
+btn_container.addEventListener('click', (event) => {
+    const isButton = event.target.nodeName === 'BUTTON';
+    if (!isButton) {
+      return;
+    }
+    console.dir(event.target.id);
+})
+
 function playRound(playerSelection, computerSelection) {
 if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     console.log("Draw!")
@@ -71,5 +80,5 @@ function game() {
 }
 
 //Calling the function so the game is played
-game();
+// game();
 
