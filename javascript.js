@@ -20,39 +20,77 @@ btn_container.addEventListener('click', (event) => {
     if (!isButton) {
       return;
     }
-    console.dir(event.target.id);
+    //console.dir(event.target.id);
+    if (event.target.id.toLowerCase() === 'rock'){
+        let playerSelection = 'Rock';
+        let computerSelection = getComputerChoice();
+        //console.log('You chose ' + playerSelection);
+        playRound(playerSelection,computerSelection);
+    }
+        
+    else if(event.target.id.toLowerCase() === 'paper') {
+        let playerSelection = 'Paper';
+        let computerSelection = getComputerChoice();
+        //console.log('You chose ' + playerSelection);
+        playRound(playerSelection,computerSelection);
+    }
+
+    else if(event.target.id.toLowerCase() === 'scissors') {
+        let playerSelection = 'Scissors';
+        let computerSelection = getComputerChoice();
+        //console.log('You chose ' + playerSelection);
+        playRound(playerSelection,computerSelection);
+    }
 })
 
+let newDiv = document.createElement('div');
+newDiv.setAttribute('class', 'main-body')
+document.body.appendChild(newDiv);
+
+
 function playRound(playerSelection, computerSelection) {
+    //let newDiv = document.createElement('div');
+    //document.querySelector('div')
+    //newDiv.setAttribute('class', 'main-body')
+    //document.body.appendChild(newDiv);
 if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     console.log("Draw!")
+    newDiv.textContent = 'Draw!'
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") {
         computerScore++;
-        console.log("Paper beats Rock! You lose! Beta!!!")
+        console.log(`${computerSelection} beats ${playerSelection}! You lose! Beta!!!`)
+        newDiv.textContent = `${computerSelection} beats ${playerSelection}! You lose! Beta!!!`
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
         playerScore++;
-        console.log("Rock beats Scissors! You Win! Alpha!!!")
+        console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
+        newDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") {
         computerScore++;
-        console.log("Scissors beats Paper! You Lose! Beta!!!")
+        console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
+        newDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
+
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
         playerScore++;
-        console.log("Paper beats Rock! You Win! Alpha!!!")
+        console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
+        newDiv.textcontent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
         computerScore++;
-        console.log("Rock beats Scissors! You Lose! Beta!!!")
+        console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
+        newDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
         playerScore++;
-        console.log("Scissors beats Paper! You Win! Alpha!!!")
+        console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
+        newDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else {
         console.log("Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game.")
+        newDiv.textContent = "Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game."
     }
 }
 

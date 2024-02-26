@@ -1,4 +1,4 @@
-.buttons, #btn-container, #title-container {
+.main-body, .buttons, #btn-container, #title-container {
     display: flex;
     justify-content: center;
     align-items: center;
