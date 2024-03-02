@@ -12,6 +12,10 @@ function getComputerChoice(){
     return randomElement;
     };
 
+let newDiv = document.createElement('div');
+newDiv.setAttribute('class', 'main-body')
+document.body.appendChild(newDiv); 
+
 // Plays one round of Rock paper scissors, keeps track of the player score and outputs result to console. 
 
 const btn_container = document.getElementById('btn-container');
@@ -24,36 +28,31 @@ btn_container.addEventListener('click', (event) => {
     if (event.target.id.toLowerCase() === 'rock'){
         let playerSelection = 'Rock';
         let computerSelection = getComputerChoice();
-        //console.log('You chose ' + playerSelection);
+        // console.log('You chose ' + playerSelection);
         playRound(playerSelection,computerSelection);
     }
         
     else if(event.target.id.toLowerCase() === 'paper') {
         let playerSelection = 'Paper';
         let computerSelection = getComputerChoice();
-        //console.log('You chose ' + playerSelection);
+        // console.log('You chose ' + playerSelection);
         playRound(playerSelection,computerSelection);
     }
 
     else if(event.target.id.toLowerCase() === 'scissors') {
         let playerSelection = 'Scissors';
         let computerSelection = getComputerChoice();
-        //console.log('You chose ' + playerSelection);
+        // console.log('You chose ' + playerSelection);
         playRound(playerSelection,computerSelection);
     }
 })
-
-let newDiv = document.createElement('div');
-newDiv.setAttribute('class', 'main-body')
-document.body.appendChild(newDiv);
-
 
 function playRound(playerSelection, computerSelection) {
     //let newDiv = document.createElement('div');
     //document.querySelector('div')
     //newDiv.setAttribute('class', 'main-body')
     //document.body.appendChild(newDiv);
-if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+    if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     console.log("Draw!")
     newDiv.textContent = 'Draw!'
     }
@@ -76,7 +75,7 @@ if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
         playerScore++;
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
-        newDiv.textcontent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
+        newDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
         computerScore++;
@@ -120,3 +119,5 @@ function game() {
 //Calling the function so the game is played
 // game();
 
+//Goes from line 95 to 44 after executing, maybe thats why the HTML is not updating
+//May need to re-order the code slightly 
