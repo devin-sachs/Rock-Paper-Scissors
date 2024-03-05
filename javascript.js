@@ -1,3 +1,18 @@
+//Create new div for game results and score tracking to append DOM 
+let resultsDiv = document.createElement('div');
+resultsDiv.setAttribute('class', 'main-body')
+document.body.appendChild(resultsDiv); 
+
+let scoreTracker = document.createElement('div');
+scoreTracker.setAttribute('class', 'main-body')
+document.body.appendChild(scoreTracker); 
+
+// Establish global variables for score, so that the function for playing rounds can access and increment them 
+
+let playerScore = 0;
+let computerScore = 0;
+
+
 // Function to establish possible choices that the computer play can choose from. 
 
 function getComputerChoice(){
@@ -11,10 +26,6 @@ function getComputerChoice(){
     let randomElement = choiceArray[randomChoiceIndex]
     return randomElement;
     };
-
-let newDiv = document.createElement('div');
-newDiv.setAttribute('class', 'main-body')
-document.body.appendChild(newDiv); 
 
 // Plays one round of Rock paper scissors, keeps track of the player score and outputs result to console. 
 
@@ -48,54 +59,52 @@ btn_container.addEventListener('click', (event) => {
 })
 
 function playRound(playerSelection, computerSelection) {
-    //let newDiv = document.createElement('div');
+    //let resultsDiv = document.createElement('div');
     //document.querySelector('div')
-    //newDiv.setAttribute('class', 'main-body')
-    //document.body.appendChild(newDiv);
+    //resultsDiv.setAttribute('class', 'main-body')
+    //document.body.appendChild(resultsDiv);
     if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     console.log("Draw!")
-    newDiv.textContent = 'Draw!'
+    resultsDiv.textContent = 'Draw!'
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") {
         computerScore++;
         console.log(`${computerSelection} beats ${playerSelection}! You lose! Beta!!!`)
-        newDiv.textContent = `${computerSelection} beats ${playerSelection}! You lose! Beta!!!`
+        resultsDiv.textContent = `${computerSelection} beats ${playerSelection}! You lose! Beta!!!`
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
         playerScore++;
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
-        newDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
+        resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") {
         computerScore++;
         console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
-        newDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
+        resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
 
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
         playerScore++;
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
-        newDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
+        resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
         computerScore++;
         console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
-        newDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
+        resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
         playerScore++;
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
-        newDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
+        resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else {
         console.log("Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game.")
-        newDiv.textContent = "Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game."
+        resultsDiv.textContent = "Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game."
     }
 }
 
-// Establish global variables for score, so that the function for playing rounds can access and increment them 
-let playerScore = 0;
-let computerScore = 0;
+
 
 // Function to play the game 5 times
 function game() {
