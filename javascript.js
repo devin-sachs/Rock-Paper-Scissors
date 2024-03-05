@@ -7,11 +7,14 @@ let scoreTracker = document.createElement('div');
 scoreTracker.setAttribute('class', 'main-body')
 document.body.appendChild(scoreTracker); 
 
+let finalResult = document.createElement('div');
+scoreTracker.setAttribute('class', 'main-body')
+document.body.appendChild(finalResult); 
+
 // Establish global variables for score, so that the function for playing rounds can access and increment them 
 
 let playerScore = 0;
 let computerScore = 0;
-
 
 // Function to establish possible choices that the computer play can choose from. 
 
@@ -54,9 +57,21 @@ btn_container.addEventListener('click', (event) => {
         let playerSelection = 'Scissors';
         let computerSelection = getComputerChoice();
         // console.log('You chose ' + playerSelection);
+
         playRound(playerSelection,computerSelection);
     }
 })
+
+if (playerScore >= 5) { 
+console.log('You Won!! Alpha!!!')
+console.log(playerScore);
+}
+
+else if (computerScore >= 5) {
+console.log("The computer Won, you lost BETA!!!!"); 
+console.log(computerScore);
+
+}
 
 function playRound(playerSelection, computerSelection) {
     //let resultsDiv = document.createElement('div');
@@ -65,36 +80,50 @@ function playRound(playerSelection, computerSelection) {
     //document.body.appendChild(resultsDiv);
     if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     console.log("Draw!")
+    console.log('Computer Score ' + computerScore);
+    console.log('Player Score ' + playerScore);
     resultsDiv.textContent = 'Draw!'
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") {
         computerScore++;
+        console.log('Computer Score ' + computerScore);
+        console.log('Player Score ' + playerScore);
         console.log(`${computerSelection} beats ${playerSelection}! You lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection}! You lose! Beta!!!`
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
         playerScore++;
+        console.log('Computer Score ' + computerScore);
+        console.log('Player Score ' + playerScore);
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") {
         computerScore++;
+        console.log('Computer Score ' + computerScore);
+        console.log('Player Score ' + playerScore);
         console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
 
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
         playerScore++;
+        console.log('Computer Score ' + computerScore);
+        console.log('Player Score ' + playerScore);
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
         computerScore++;
+        console.log('Computer Score ' + computerScore);
+        console.log('Player Score ' + playerScore);
         console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
         playerScore++;
+        console.log('Computer Score ' + computerScore);
+        console.log('Player Score ' + playerScore);
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
     }
@@ -127,6 +156,3 @@ function game() {
 
 //Calling the function so the game is played
 // game();
-
-//Goes from line 95 to 44 after executing, maybe thats why the HTML is not updating
-//May need to re-order the code slightly 
