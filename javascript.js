@@ -8,7 +8,7 @@ scoreTracker.setAttribute('class', 'main-body')
 document.body.appendChild(scoreTracker); 
 
 let finalResult = document.createElement('div');
-scoreTracker.setAttribute('class', 'main-body')
+finalResult.setAttribute('class', 'main-body')
 document.body.appendChild(finalResult); 
 
 // Establish global variables for score, so that the function for playing rounds can access and increment them 
@@ -31,23 +31,24 @@ function getComputerChoice(){
     };
 
 
-function checkWinner(){ 
+//function checkWinner(){ 
 if (playerScore >= 5) { 
     console.log('You Won!! Alpha!!!')
     console.log(playerScore);
+    finalResult.textContent = 'You Won the Game!! Alpha!!!'
     return true;
     }
     
     else if (computerScore >= 5) {
     console.log("The computer Won, you lost BETA!!!!"); 
     console.log(computerScore);
+    finalResult.textContent = 'You Won the Game!! Alpha!!!'
     return true;
     }
     
     else{ 
         return false;
     }
-}
 
 // Plays one round of Rock paper scissors, keeps track of the player score and outputs result to console. 
 
@@ -89,64 +90,40 @@ const btn_container = document.getElementById('btn-container');
         })
 
 function playRound(playerSelection, computerSelection) {
-    //let resultsDiv = document.createElement('div');
-    //document.querySelector('div')
-    //resultsDiv.setAttribute('class', 'main-body')
-    //document.body.appendChild(resultsDiv);
+
     if( playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-    console.log("Draw!")
-    console.log('Computer Score ' + computerScore);
-    console.log('Player Score ' + playerScore);
-    resultsDiv.textContent = 'Draw!'
-    // checkWinner();
+        resultsDiv.textContent = 'Draw!'
+        scoreTracker.textContent = 'Computer Score: ' + computerScore + '\n Player Score: ' + playerScore;
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") {
         computerScore++;
-        console.log('Computer Score ' + computerScore);
-        console.log('Player Score ' + playerScore);
-        console.log(`${computerSelection} beats ${playerSelection}! You lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection}! You lose! Beta!!!`
-        // checkWinner();
+        scoreTracker.textContent = 'Computer Score: ' + computerScore + '\n Player Score: ' + playerScore;
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
         playerScore++;
-        console.log('Computer Score ' + computerScore);
-        console.log('Player Score ' + playerScore);
-        console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
-        // checkWinner();
+        scoreTracker.textContent = 'Computer Score: ' + computerScore + '\n Player Score: ' + playerScore;
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") {
         computerScore++;
-        console.log('Computer Score ' + computerScore);
-        console.log('Player Score ' + playerScore);
-        console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
-        // checkWinner();
+        scoreTracker.textContent = 'Computer Score: ' + computerScore + '\n Player Score: ' + playerScore;
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
         playerScore++;
-        console.log('Computer Score ' + computerScore);
-        console.log('Player Score ' + playerScore);
-        console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
-        // checkWinner();
+        scoreTracker.textContent = 'Computer Score: ' + computerScore + '\n Player Score: ' + playerScore;
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
         computerScore++;
-        console.log('Computer Score ' + computerScore);
-        console.log('Player Score ' + playerScore);
-        console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
-        // checkWinner();
+        scoreTracker.textContent = 'Computer Score: ' + computerScore + '\n Player Score: ' + playerScore;
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
         playerScore++;
-        console.log('Computer Score ' + computerScore);
-        console.log('Player Score ' + playerScore);
-        console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
-        // checkWinner();
+        scoreTracker.textContent = 'Computer Score: ' + computerScore + '\n Player Score: ' + playerScore;
     }
     else {
         console.log("Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game.")
