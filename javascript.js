@@ -30,48 +30,63 @@ function getComputerChoice(){
     return randomElement;
     };
 
+
+function checkWinner(){ 
+if (playerScore >= 5) { 
+    console.log('You Won!! Alpha!!!')
+    console.log(playerScore);
+    return true;
+    }
+    
+    else if (computerScore >= 5) {
+    console.log("The computer Won, you lost BETA!!!!"); 
+    console.log(computerScore);
+    return true;
+    }
+    
+    else{ 
+        return false;
+    }
+}
+
 // Plays one round of Rock paper scissors, keeps track of the player score and outputs result to console. 
 
 const btn_container = document.getElementById('btn-container');
-btn_container.addEventListener('click', (event) => {
-    const isButton = event.target.nodeName === 'BUTTON';
-    if (!isButton) {
-      return;
-    }
-    //console.dir(event.target.id);
-    if (event.target.id.toLowerCase() === 'rock'){
-        let playerSelection = 'Rock';
-        let computerSelection = getComputerChoice();
-        // console.log('You chose ' + playerSelection);
-        playRound(playerSelection,computerSelection);
-    }
+        btn_container.addEventListener('click', (event) => {
+            const isButton = event.target.nodeName === 'BUTTON';
+            if (!isButton) {
+              return;
+            }
+
+            //Breaks the function and does not allow the event listener to continue if score is 5 or more 
+            if (checkWinner(true)) {
+                return;
+            };
+
+            //console.dir(event.target.id);
+            if (event.target.id.toLowerCase() === 'rock'){
+                let playerSelection = 'Rock';
+                let computerSelection = getComputerChoice();
+                // console.log('You chose ' + playerSelection);
+                playRound(playerSelection,computerSelection);
+            }
+                
+            else if(event.target.id.toLowerCase() === 'paper') {
+                let playerSelection = 'Paper';
+                let computerSelection = getComputerChoice();
+                // console.log('You chose ' + playerSelection);
+                playRound(playerSelection,computerSelection);
+            }
         
-    else if(event.target.id.toLowerCase() === 'paper') {
-        let playerSelection = 'Paper';
-        let computerSelection = getComputerChoice();
-        // console.log('You chose ' + playerSelection);
-        playRound(playerSelection,computerSelection);
-    }
-
-    else if(event.target.id.toLowerCase() === 'scissors') {
-        let playerSelection = 'Scissors';
-        let computerSelection = getComputerChoice();
-        // console.log('You chose ' + playerSelection);
-
-        playRound(playerSelection,computerSelection);
-    }
-})
-
-if (playerScore >= 5) { 
-console.log('You Won!! Alpha!!!')
-console.log(playerScore);
-}
-
-else if (computerScore >= 5) {
-console.log("The computer Won, you lost BETA!!!!"); 
-console.log(computerScore);
-
-}
+            else if(event.target.id.toLowerCase() === 'scissors') {
+                let playerSelection = 'Scissors';
+                let computerSelection = getComputerChoice();
+                // console.log('You chose ' + playerSelection);
+        
+                playRound(playerSelection,computerSelection);
+            }
+        
+        })
 
 function playRound(playerSelection, computerSelection) {
     //let resultsDiv = document.createElement('div');
@@ -83,6 +98,7 @@ function playRound(playerSelection, computerSelection) {
     console.log('Computer Score ' + computerScore);
     console.log('Player Score ' + playerScore);
     resultsDiv.textContent = 'Draw!'
+    // checkWinner();
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") {
         computerScore++;
@@ -90,6 +106,7 @@ function playRound(playerSelection, computerSelection) {
         console.log('Player Score ' + playerScore);
         console.log(`${computerSelection} beats ${playerSelection}! You lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection}! You lose! Beta!!!`
+        // checkWinner();
     }
     else if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
         playerScore++;
@@ -97,6 +114,7 @@ function playRound(playerSelection, computerSelection) {
         console.log('Player Score ' + playerScore);
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
+        // checkWinner();
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") {
         computerScore++;
@@ -104,7 +122,7 @@ function playRound(playerSelection, computerSelection) {
         console.log('Player Score ' + playerScore);
         console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
-
+        // checkWinner();
     }
     else if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock") {
         playerScore++;
@@ -112,6 +130,7 @@ function playRound(playerSelection, computerSelection) {
         console.log('Player Score ' + playerScore);
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
+        // checkWinner();
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
         computerScore++;
@@ -119,6 +138,7 @@ function playRound(playerSelection, computerSelection) {
         console.log('Player Score ' + playerScore);
         console.log(`${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`)
         resultsDiv.textContent = `${computerSelection} beats ${playerSelection} ! You Lose! Beta!!!`
+        // checkWinner();
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
         playerScore++;
@@ -126,14 +146,16 @@ function playRound(playerSelection, computerSelection) {
         console.log('Player Score ' + playerScore);
         console.log(`${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`)
         resultsDiv.textContent = `${playerSelection} beats ${computerSelection}! You Win! Alpha!!!`
+        // checkWinner();
     }
     else {
         console.log("Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game.")
         resultsDiv.textContent = "Error, unable to proceed. Proper conditions were not met to win, lose, or draw the game."
     }
+
+    // Checks for a winner as soon as the score values obtain 5 points 
+    checkWinner();
 }
-
-
 
 // Function to play the game 5 times
 function game() {
