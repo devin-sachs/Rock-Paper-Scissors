@@ -31,7 +31,7 @@ function getComputerChoice(){
     };
 
 
-//function checkWinner(){ 
+function checkWinner(){ 
 if (playerScore >= 5) { 
     console.log('You Won!! Alpha!!!')
     console.log(playerScore);
@@ -49,7 +49,7 @@ if (playerScore >= 5) {
     else{ 
         return false;
     }
-
+}
 // Plays one round of Rock paper scissors, keeps track of the player score and outputs result to console. 
 
 const btn_container = document.getElementById('btn-container');
